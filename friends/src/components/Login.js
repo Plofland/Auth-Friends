@@ -26,7 +26,7 @@ export default function Login(props) {
         localStorage.setItem('token', JSON.stringify(res.data.payload));
         // props.history.push('/friends');
         // window.location.href = 'http://localhost:3000/friend';
-        window.location = 'http://localhost:3000/friend';
+        window.location = 'http://localhost:3000/friends';
       })
       .catch((err) => {
         console.log(err.response.data.error);

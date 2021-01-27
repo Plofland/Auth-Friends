@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+import FriendCard from './FriendCard';
+// import FriendForm from './FriendForm';
 
 export default function Friends() {
   const [friends, setFriends] = useState([]);
@@ -17,7 +20,7 @@ export default function Friends() {
         }
       })
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         setFriends(res.data);
       })
       .catch((err) => {
@@ -25,14 +28,30 @@ export default function Friends() {
       });
   };
 
+  console.log('Friends Component STATE', friends);
+
   return (
-    <div>
-      <h2>Friends List:</h2>
-      <div>
-        <h3>{friends.name}</h3>
-        <p>{friends.age}</p>
-        <p>{friends.email}</p>
-      </div>
-    </div>
+    <>
+      <h2>Add a Friend:</h2>
+      {/* <FriendForm /> */}
+      <Cards>
+        {friends.map((friend) => (
+          <FriendCard key={friends.id} friend={friend} />
+        ))}
+      </Cards>
+    </>
   );
 }
+
+const Cards = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  border: 2px solid black;
+  width: 100%;
+  @media (max-width: 800px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;

@@ -6,28 +6,30 @@ const initialValues = {
   password: ''
 };
 
-export default function Login() {
-  const [credentials, setCredentials] = useState(initialValues);
+export default function Login(props) {
+  const [credentials, setcredentials] = useState(initialValues);
 
   const handleChange = (e) => {
-    setCredentials({
-      credentials: {
-        ...credentials,
-        [e.target.name]: e.target.value
-      }
+    setcredentials({
+      ...credentials,
+      [e.target.name]: e.target.value
     });
   };
-  console.log(credentials);
+  // console.log(credentials);
 
   const login = (e) => {
     e.preventDefault();
     axios
-      .get('http://localhost:5000/api/login')
+      .post('http://localhost:5000/api/login', credentials)
       .then((res) => {
-        console.log(res);
+        // console.log(res.data.payload);
+        localStorage.setItem('token', JSON.stringify(res.data.payload));
+        // props.history.push('/friends');
+        // window.location.href = 'http://localhost:3000/friend';
+        window.location = 'http://localhost:3000/friend';
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response.data.error);
       });
   };
 

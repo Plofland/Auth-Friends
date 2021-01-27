@@ -6,7 +6,9 @@ import Login from './components/Login';
 import Friends from './components/Friends';
 
 function App() {
-  const logout = () => {};
+  const logout = () => {
+    localStorage.removeItem('token');
+  };
 
   return (
     <Router>
@@ -16,7 +18,9 @@ function App() {
             <Link to="/login">Login</Link>
           </li>
           <li>
-            <Link onClick={logout}>Logout</Link>
+            <Link to="/" onClick={logout}>
+              Logout
+            </Link>
           </li>
           <li>
             <Link to="/friends">Friends</Link>

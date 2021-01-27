@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 
 const initialValues = {
   username: '',
@@ -20,14 +20,15 @@ export default function Login() {
   console.log(credentials);
 
   const login = (e) => {
-    // axios
-    //   .get('http://localhost:5000')
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    e.preventDefault();
+    axios
+      .get('http://localhost:5000/api/login')
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

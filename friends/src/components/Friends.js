@@ -14,21 +14,17 @@ export default function Friends() {
   const getFriends = () => {
     axios
       .get('http://localhost:5000/api/friends', {
-        // url: 'http://localhost:5000/api/friends',
         headers: {
           authorization: JSON.parse(localStorage.getItem('token'))
         }
       })
       .then((res) => {
-        // console.log(res);
         setFriends(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
-  // console.log('Friends Component STATE', friends);
 
   return (
     <>

@@ -15,14 +15,12 @@ export default function Login(props) {
       [e.target.name]: e.target.value
     });
   };
-  // console.log(credentials);
 
   const handleLogin = (e) => {
     e.preventDefault();
     axios
       .post('http://localhost:5000/api/login', credentials)
       .then((res) => {
-        // console.log(res.data.payload);
         localStorage.setItem('token', JSON.stringify(res.data.payload));
         // props.history.push('/friends'); also works as a redirect
         // window.location.href = 'http://localhost:3000/friend'; also works as a redirect

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import axios from 'axios';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 export default function FriendForm() {
@@ -10,11 +9,9 @@ export default function FriendForm() {
       ...newFriend,
       [e.target.name]: e.target.value
     });
-    // console.log(newFriend);
   };
 
   const submitFriend = (e) => {
-    e.preventDefault();
     axiosWithAuth()
       .post('/friends', newFriend)
       .then((res) => {

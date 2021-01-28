@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import './App.css';
 import Login from './components/Login';
 import Friends from './components/Friends';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   const logout = () => {
@@ -29,7 +30,6 @@ function App() {
         <h1>List Your Friends!</h1>
         <Switch>
           <PrivateRoute exact path="/friends" component={Friends} />
-          {/* <Route path="/friends" component={Friends} /> */}
           <Route path="/login" component={Login} />
           <Route component={Login} />
         </Switch>

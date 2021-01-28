@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import FriendCard from './FriendCard';
-// import FriendForm from './FriendForm';
+import FriendForm from './FriendForm';
 
 export default function Friends() {
   const [friends, setFriends] = useState([]);
@@ -20,7 +20,7 @@ export default function Friends() {
         }
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setFriends(res.data);
       })
       .catch((err) => {
@@ -28,12 +28,13 @@ export default function Friends() {
       });
   };
 
-  console.log('Friends Component STATE', friends);
+  // console.log('Friends Component STATE', friends);
 
   return (
     <>
       <h2>Add a Friend:</h2>
-      {/* <FriendForm /> */}
+      <br />
+      <FriendForm />
       <Cards>
         {friends.map((friend) => (
           <FriendCard key={friends.id} friend={friend} />
@@ -43,12 +44,13 @@ export default function Friends() {
   );
 }
 
+//_STYLING_
 const Cards = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   width: 100%;
   @media (max-width: 800px) {
     flex-direction: column;

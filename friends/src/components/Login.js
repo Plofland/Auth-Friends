@@ -17,15 +17,15 @@ export default function Login(props) {
   };
   // console.log(credentials);
 
-  const login = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     axios
       .post('http://localhost:5000/api/login', credentials)
       .then((res) => {
         // console.log(res.data.payload);
         localStorage.setItem('token', JSON.stringify(res.data.payload));
-        // props.history.push('/friends');
-        // window.location.href = 'http://localhost:3000/friend';
+        // props.history.push('/friends'); also works as a redirect
+        // window.location.href = 'http://localhost:3000/friend'; also works as a redirect
         window.location = 'http://localhost:3000/friends';
       })
       .catch((err) => {
@@ -35,7 +35,7 @@ export default function Login(props) {
 
   return (
     <div>
-      <form onSubmit={login}>
+      <form onSubmit={handleLogin}>
         <input
           type="text"
           name="username"

@@ -28,8 +28,8 @@ function App() {
         </ul>
         <h1>List Your Friends!</h1>
         <Switch>
-          {/* <PrivateRoute exact path="/friends" component={Friends} /> */}
-          <Route path="/friends" component={Friends} />
+          <PrivateRoute exact path="/friends" component={Friends} />
+          {/* <Route path="/friends" component={Friends} /> */}
           <Route path="/login" component={Login} />
           <Route component={Login} />
         </Switch>
